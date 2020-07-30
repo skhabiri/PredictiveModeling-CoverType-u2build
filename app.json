@@ -1,0 +1,8 @@
+{
+   "name": "FORESTCOVER-METRICS",
+   "buildpacks": [
+      {
+         "url": "heroku/python"
+      }
+   ]
+}
