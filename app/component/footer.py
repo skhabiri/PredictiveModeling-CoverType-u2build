@@ -27,11 +27,11 @@ content = dbc.Container(
                     ),
                     html.A(
                         html.I(className="fab fa-linkedin mr-1"),
-                        href="https://www.linkedin.com/in/brianthomasross/",
+                        href="www.linkedin.com/in/shahnamkhabiri",
                     ),
                     html.A(
                         html.I(className="fab fa-twitter-square mr-1"),
-                        href="https://twitter.com/brianthomasross",
+                        href="https://twitter.com/shahnam_k",
                     ),
                 ],
                 className="lead",
