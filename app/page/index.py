@@ -19,7 +19,8 @@ column1 = dbc.Col(
     [
         dcc.Markdown(dedent('''
 Machine learning modeling techniques are applied to classify a multi-class dataset.
-For this purpose we used the forest cover-type dataset available on UCI Machine Learning Repository.
+For this purpose we use the [Covertype](https://archive.ics.uci.edu/ml/datasets/covertype) 
+dataset available on UCI Machine Learning Repository.
 
 The following classifiers were evaluated and compared for accuracy, precision and recall scores.
 * LogisticRegression

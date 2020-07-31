@@ -6,36 +6,26 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 
-import pickle
-
-lr = pickle.load(open('LogisticRegression.pkl', 'rb'))
-rc = pickle.load(open('RidgeClassifier.pkl', 'rb'))
-rfc = pickle.load(open('RandomForestClassifier.pkl', 'rb'))
-gbc = pickle.load(open('GradientBoostingClassifier.pkl', 'rb'))
-xgbc = pickle.load(open('XGBClassifier.pkl', 'rb'))
+# import pickle
+#
+# lr = pickle.load(open('LogisticRegression.pkl', 'rb'))
+# rc = pickle.load(open('RidgeClassifier.pkl', 'rb'))
+# rfc = pickle.load(open('RandomForestClassifier.pkl', 'rb'))
+# gbc = pickle.load(open('GradientBoostingClassifier.pkl', 'rb'))
+# xgbc = pickle.load(open('XGBClassifier.pkl', 'rb'))
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 #app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-# dcc.Dropdown(
-#                 id='your-dropdown-id',
-#                 options=[{'label': i, 'value': i} for i in variable_name],
-#                 value= variable_name,
-#                 multi=True,
-#             ),
-# #
-# layout = dbc.Row([column1, column2])
-
-
 
 layout = html.Div([
                 dbc.Row([dbc.Col(
                                 dbc.Card([
-                                        dbc.CardHeader("Estimator Metrics"),
+                                        dbc.CardHeader("CLasssification Scores"),
                                         dbc.CardBody([
                                                     # html.H5("Card title", className="card-title"),
-                                                    html.P("The performance of different classifiers are comapred for the Forest Cover-Type dataset. The target label in this dataset has 7 classes."
+                                                    html.P("The target label of the Covertype datset is 'Cover_Type'. The target label has 7 classes. Here we can compare accuracy, precision, and recall scores of the listed classifiers. "
                                                     ,className="card-text"),
                                                     ])
                                         ],
@@ -46,13 +36,13 @@ layout = html.Div([
                                 dcc.Dropdown(
                                         id="dropdown1",
                                         options=[
-                                                {'label': 'LogisticRegression', 'value': 0},
-                                                {'label': 'RidgeClassifier', 'value': 1},
-                                                {'label': 'RandomForestClassifier', 'value': 2},
-                                                {'label': 'GradientBoostingClassifier', 'value': 3},
-                                                {'label': 'XGBClassifier', 'value': 4}
+                                                {'label': 'LogisticRegression', 'value': 'LogisticRegression'},
+                                                {'label': 'RidgeClassifier', 'value': 'RidgeClassifier'},
+                                                {'label': 'RandomForestClassifier', 'value': 'RandomForestClassifier'},
+                                                {'label': 'GradientBoostingClassifier', 'value': 'GradientBoostingClassifier'},
+                                                {'label': 'XGBClassifier', 'value': 'XGBClassifier'}
                                                 ],
-                                        value= [0, 2],
+                                        value= ['LogisticRegression', 'RandomForestClassifier' ],
                                         placeholder= "Select an Estimator",
                                         multi=True
                                             )
@@ -61,11 +51,11 @@ layout = html.Div([
                                 dcc.Checklist(
                                         id="checkbox1",
                                         options=[
-                                                {'label': 'Accuracy', 'value': 0},
-                                                {'label': 'Precision', 'value': 1},
-                                                {'label': 'Recall', 'value': 2}
+                                                {'label': 'Accuracy', 'value': 'Accuracy'},
+                                                {'label': 'Precision', 'value': 'Precision'},
+                                                {'label': 'Recall', 'value': 'Recall'}
                                                 ],
-                                        value=[0]
+                                        value=['Accuracy']
                                             ),
                                 dbc.Button("Estimator metrics", id="Estimator metrics", className="mr-1")
                                 ])
@@ -76,7 +66,7 @@ layout = html.Div([
                                         id="example-output",
                                         placeholder="Enter a value...",
                                         # value="This is a TextArea component",
-                                        style={"width": "100%"}
+                                        style={"width": "100%", 'height': 300}
                                             )
                                 )
                         ],

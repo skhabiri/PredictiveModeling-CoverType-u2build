@@ -18,8 +18,18 @@ rfc = pickle.load(open('RandomForestClassifier.pkl', 'rb'))
 gbc = pickle.load(open('GradientBoostingClassifier.pkl', 'rb'))
 xgbc = pickle.load(open('XGBClassifier.pkl', 'rb'))
 
-est_list = [lr, rc, rfc, gbc, xgbc]
-style_list = ["primary","secondary","info"]
+# est_list = [lr, rc, rfc, gbc, xgbc]
+estdict = {"LogisticRegression": lr,
+            "RidgeClassifier": rc,
+            "RandomForestClassifier": rfc,
+            "GradientBoostingClassifier": gbc,
+            "XGBClassifier": xgbc}
+
+scoredict = {"Accuracy": 0,
+            "Precision":1,
+            "Recall":2}
+
+# style_list = ["primary","secondary","info"]
 
 def register_callbacks(app):
     """Wrap the main application function with the application callbacks.
@@ -59,66 +69,21 @@ def register_callbacks(app):
     )
     def update_output(n_clicks,dropval,boxval):
         if n_clicks is None:
-            return "Not clicked."
+            return "Compare the Metrics"
+        # else:
+        #     my_list=[]
+        #     for i in dropval:
+        #         for j in boxval:
+        #             my_list.append(est_list[i][j])
+        #     return ' '.join([str(elem) for elem in my_list])
         else:
-            my_list=[]
-            for i in dropval:
-                for j in boxval:
-                    my_list.append(est_list[i][j])
-            return str(my_list)
-            # return str(est_list[dropval[0]][boxval[0]])
-            # return f"Clicked {n_clicks} times."
-            # card_content = [
-            # dbc.CardHeader("Card header"),
-            # dbc.CardBody(
-            #     [
-            #         html.H5("Card title", className="card-title"),
-            #         html.P(
-            #             "This is some card content that we'll reuse",
-            #             className="card-text",
-            #         ),
-            #     ]
-            # )]
-
-            # rows = []
-            # for i in dropval:
-            #     columns = []
-            #     for j in boxval:
-            #         card_content = [
-            #                 dbc.CardHeader("Card header"),
-            #                 dbc.CardBody(
-            #                     [
-            #                         html.H5("Card title", className="card-title"),
-            #                         html.P(
-            #                             str(est_list[i][j]),
-            #                             className="card-text",
-            #                         ),
-            #                     ]
-            #                 )
-            #         ]
-            #         columns.append(dbc.Col(dbc.Card(card_content, color=style_list[j], inverse=True)))
-            #     rows.append(dbc.Row(columns, className="mb-4",))
-            # return rows;
-
-# app.layout = html.Div([
-#     dcc.Dropdown(
-#         id='countries-dropdown',
-#         options=[{'label': k, 'value': k} for k in all_options.keys()],
-#         value='America',  #default value to show
-#         multi=True,
-#         searchable=False
-#     ),
-#
-#     dcc.Dropdown(id='cities-dropdown', multi=True, searchable=False, placeholder="Select a city"),
-#
-#     html.Div(id='display-selected-values')
-# ])
-#
-# @app.callback(
-#     dash.dependencies.Output('cities-dropdown', 'options'),
-#     [dash.dependencies.Input('countries-dropdown', 'value')])
-# def set_cities_options(selected_country):
-#     if type(selected_country) == 'str':
-#         return [{'label': i, 'value': i} for i in all_options[selected_country]]
-#     else:
-#         return [{'label': i, 'value': i} for country in selected_country for i in all_options[country]]
+            my_string=''
+            for est in dropval:
+                my_string += "\n***** " + est + " *****\n"
+                for scr in boxval:
+                    my_string = my_string + scr + " score is:\n"
+                    try: iter(estdict[est][scoredict[scr]])
+                    except Exception: my_string = my_string + " " + str(round(estdict[est][scoredict[scr]],3)) +"\n"
+                    else:
+                        my_string = my_string + ', '.join([str(round(item, 3)) for item in estdict[est][scoredict[scr]]]) +"\n"
+            return my_string
