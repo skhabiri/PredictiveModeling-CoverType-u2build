@@ -19,7 +19,7 @@ content = dbc.Container(
                     html.Span("Shahnam Khabiri", className="mr-2"),
                     html.A(
                         html.I(className="fas fa-envelope-square mr-1"),
-                        href="mailto:shahnam.khabiri@gmail.com",
+                        href="mailto:veggiecode@gmail.com",
                     ),
                     html.A(
                         html.I(className="fab fa-github-square mr-1"),
@@ -27,11 +27,11 @@ content = dbc.Container(
                     ),
                     html.A(
                         html.I(className="fab fa-linkedin mr-1"),
-                        href="www.linkedin.com/in/shahnamkhabiri",
+                        href="https://linkedin.com/in/skhabiri",
                     ),
                     html.A(
                         html.I(className="fab fa-twitter-square mr-1"),
-                        href="https://twitter.com/shahnam_k",
+                        href="https://twitter.com/ShahnamKhabiri",
                     ),
                 ],
                 className="lead",
