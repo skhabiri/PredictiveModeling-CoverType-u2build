@@ -1,7 +1,7 @@
 # forestcover_metrics
 
-classifiers metrics for forest cover type dataset
-a heroku plotly dash app based on estimators data saved as pkl file.
+This is a Classifiers metrics for forest cover_type dataset. It's
+a plotly dash app deployed on Heroku. Estimators data have been saved as pkl file.
 
 
 ### Running locally
