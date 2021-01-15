@@ -24,7 +24,7 @@ content = html.Div(
                     label="More",
                 ),
             ],
-            brand="forestcover_metrics",
+            brand="Forest Cover Type",
             brand_href="/",
             color="primary",
             dark=True,
