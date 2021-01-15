@@ -34,4 +34,4 @@ from pdpbox import pdp
 from pdpbox.pdp import pdp_interact, pdp_interact_plot
 import shap
 ```
-https://github.com/skhabiri/forestcover-metrics
+https://github.com/skhabiri/PredictiveModeling-CoverType-u2build
