@@ -1,5 +1,6 @@
 {
-   "name": "FORESTCOVER-METRICS",
+   // "name": "FORESTCOVER-METRICS",
+   "name": "predictivemodeling-covertype",
    "buildpacks": [
       {
          "url": "heroku/python"

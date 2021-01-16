@@ -36,7 +36,7 @@ Irvine, CA: University of California, School of Information and Computer Science
 
         ''')),
         dcc.Link(
-            dbc.Button("Evaluation Metrics", color="primary"), href="/predictions"
+            dbc.Button("Prediction Metrics", color="primary"), href="/predictions"
         ),
     ],
     md=4,

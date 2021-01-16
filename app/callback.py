@@ -63,13 +63,13 @@ def register_callbacks(app):
 
 
     @app.callback(
-        Output("example-output", "value"),
-        [Input("Estimator metrics", "n_clicks")],
-        [State('dropdown1', 'value'), State('checkbox1', 'value')]
+        Output("report_output", "value"),
+        [Input("Compute", "n_clicks")],
+        [State('est_dropdown1', 'value'), State('score_checkbox1', 'value')]
     )
     def update_output(n_clicks,dropval,boxval):
         if n_clicks is None:
-            return "Compare the Metrics"
+            return "Metrics Report"
         # else:
         #     my_list=[]
         #     for i in dropval:

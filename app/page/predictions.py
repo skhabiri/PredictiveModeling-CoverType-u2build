@@ -22,7 +22,7 @@ from dash.dependencies import Input, Output
 layout = html.Div([
                 dbc.Row([dbc.Col(
                                 dbc.Card([
-                                        dbc.CardHeader("CLasssification Scores"),
+                                        dbc.CardHeader("Summary"),
                                         dbc.CardBody([
                                                     # html.H5("Card title", className="card-title"),
                                                     html.P("The target label of the Covertype datset is 'Cover_Type'. The target label has 7 classes. Here we can compare accuracy, precision, and recall scores of the listed classifiers. "
@@ -34,7 +34,7 @@ layout = html.Div([
                                 ),
                         dbc.Col(
                                 dcc.Dropdown(
-                                        id="dropdown1",
+                                        id="est_dropdown1",
                                         options=[
                                                 {'label': 'LogisticRegression', 'value': 'LogisticRegression'},
                                                 {'label': 'RidgeClassifier', 'value': 'RidgeClassifier'},
@@ -49,7 +49,7 @@ layout = html.Div([
                             ),
                         dbc.Col([
                                 dcc.Checklist(
-                                        id="checkbox1",
+                                        id="score_checkbox1",
                                         options=[
                                                 {'label': 'Accuracy', 'value': 'Accuracy'},
                                                 {'label': 'Precision', 'value': 'Precision'},
@@ -57,13 +57,13 @@ layout = html.Div([
                                                 ],
                                         value=['Accuracy']
                                             ),
-                                dbc.Button("Estimator metrics", id="Estimator metrics", className="mr-1")
+                                dbc.Button("Compute The Metrics", id="Compute", className="mr-1")
                                 ])
                         ],
                         className="mb-4",
                         ),
                 dbc.Row([dbc.Col(dcc.Textarea(
-                                        id="example-output",
+                                        id="report_output",
                                         placeholder="Enter a value...",
                                         # value="This is a TextArea component",
                                         style={"width": "100%", 'height': 300}
