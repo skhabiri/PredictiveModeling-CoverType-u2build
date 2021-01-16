@@ -44,7 +44,7 @@ def register_dashboard(server):
     )
 
     with server.app_context():
-        dashboard.title = "Test Heroku"
+        dashboard.title = "Forest Cover Type"
         register_callbacks(dashboard)
 
     return dashboard
